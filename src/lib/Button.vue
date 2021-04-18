@@ -53,6 +53,7 @@ button.color-button {
   > .color-button-text {
     color: inherit;
     display: inline-block;
+    font-size: 14px;
 
   }
   &.large {
