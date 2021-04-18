@@ -1,11 +1,11 @@
 <template>
-  <button class="color-button" :class="[type,size]" type="button">
+  <button class="color-button" :class="[type,size,{'disabled':disabled}]" type="button">
     <span class="color-button-text">
       <slot></slot>
     </span>
   </button>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     type: {
@@ -15,6 +15,10 @@ export default {
     size: {
       type: String,
       default: 'normal'
+    },
+    disabled:{
+      type:Boolean,
+      default:false
     }
   },
   setup(props, context) {
@@ -82,6 +86,11 @@ button.color-button {
     &:hover {
       background: rgba($blue, .2);
     }
+  }
+  &.disabled {
+    opacity: .5;
+    cursor: default;
+    pointer-events: none;
   }
 
 }

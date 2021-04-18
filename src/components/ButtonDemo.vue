@@ -13,6 +13,10 @@
     <Button size="large">Large</Button>
     <Button size="small">Small</Button>
   </div>
+  <h1>示例4</h1>
+  <div>
+    <Button disabled>Disabled</Button>
+  </div>
 </template>
 
 <script lang="ts">
