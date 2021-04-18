@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked:value}">
+  <button @click="toggle" :class="{checked:value,disabled}" class="color-switch">
     <span></span>
   </button>
 </template>
@@ -7,7 +7,12 @@
 <script lang="ts">
 export default {
    props:{
-     value:Boolean
+     value:Boolean,
+     disabled:{
+       type:Boolean,
+       default:false
+     }
+
    },
     setup(props,context){
       const toggle = ()=>{
@@ -18,10 +23,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   $h:22px;
   $h2:$h - 4px;
-  button {
+  .color-switch {
     position: relative;
     display: inline-block;
     width: $h * 2;
@@ -64,6 +69,11 @@ export default {
           margin-left: -4px;
         }
       }
+    }
+    &.disabled {
+      opacity: .5;
+      cursor: default;
+      pointer-events: none;
     }
   }
 
