@@ -86,7 +86,7 @@ export default {
 </script>
 
 <style lang="scss">
-$blue: #40a9ff;
+$blue: #1980ff;
 $border-color: #d9d9d9;
 .color-tabs {
   &-nav {

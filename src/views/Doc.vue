@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <TopNav class="nav"/>
+    <TopNav class="nav" toggle-menu-button-visible/>
     <div class="content">
         <aside v-if="menuVisible">
           <h2>组件列表</h2>
@@ -32,7 +32,6 @@ export default {
   components:{TopNav},
   setup(){
     const menuVisible = inject<Ref<boolean>>('menuVisible')
-    console.log('Doc 获取的 menuVisible 为：' + menuVisible.value)
     return {
       menuVisible
     }
@@ -66,9 +65,9 @@ export default {
       }
       @media (max-width:500px) {
         position: fixed;
-        top: 0;
+        top: 70px;
         left:0;
-        padding-top: 70px;
+
       }
     }
     > main {
