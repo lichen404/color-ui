@@ -2,7 +2,7 @@ import Dialog from './Dialog.vue';
 import {createApp, h} from 'vue';
 
 export const openDialog = (options) => {
-    const {title, content,closeOnClickOverlay} = options;
+    const {title, content,closeOnClickOverlay,onCancel,onAccept} = options;
     const div = document.createElement('div');
     document.body.appendChild(div);
     const app = createApp({
@@ -10,14 +10,17 @@ export const openDialog = (options) => {
             return h(Dialog, {
                 visible: true,
                 closeOnClickOverlay,
+                title,
                 'onUpdate:visible': (newVisible) => {
                     if (!newVisible) {
                         app.unmount();
                         div.remove();
                     }
-                }
+                },
+                onAccept,
+                onCancel,
             }, {
-                title, content
+                 content
             });
         }
     });

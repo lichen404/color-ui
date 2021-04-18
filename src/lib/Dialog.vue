@@ -4,22 +4,28 @@
       <div class="color-dialog-overlay" @click="onClickOverlay"></div>
       <div class="color-dialog-wrapper">
         <div class="color-dialog">
-          <header>标题<span class="color-dialog-close" @click="close"></span></header>
+          <header>
+            <span class="color-dialog-title">
+            {{ title }}
+          </span>
+            <svg class="color-dialog-close" aria-hidden="true" @click="close">
+              <use xlink:href="#icon-close"></use>
+            </svg>
+          </header>
           <main>
             <slot name="content"/>
           </main>
           <footer>
-            <Button>确定</Button>
-            <Button>取消</Button>
+            <Button @click="onAccept" :disabled="!isValid">{{ acceptText }}</Button>
+            <Button @click="onCancel">{{ cancelText }}</Button>
           </footer>
         </div>
       </div>
     </Teleport>
-
   </template>
 </template>
-<script>
-import Button from './Button.vue'
+<script lang="ts">
+import Button from './Button.vue';
 
 export default {
   components: {Button},
@@ -31,35 +37,60 @@ export default {
     closeOnClickOverlay: {
       type: Boolean,
       default: false
+    },
+    acceptText: {
+      type: String,
+      default: 'Accept'
+    },
+    cancelText: {
+      type: String,
+      default: 'Cancel'
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isValid: {
+      type: Boolean,
+      default: true
     }
   },
+  emits: ['update:visible', 'accept', 'cancel'], //声明要触发的自定义事件，否则会有警告
   setup(props, context) {
     const close = () => {
-      context.emit('update:visible', false)
-    }
+      context.emit('update:visible', false);
+    };
     const onClickOverlay = () => {
       if (props.closeOnClickOverlay) {
-        close()
+        close();
       }
-    }
+    };
+    const onCancel = () => {
+      context.emit('cancel');
+      close();
+    };
+    const onAccept = () => {
+      context.emit('accept');
+      close();
+    };
 
     return {
       close,
-      onClickOverlay
-    }
+      onClickOverlay,
+      onAccept,
+      onCancel
+    };
   }
 }
 </script>
 <style lang="scss">
-$radius: 4px;
+$radius: 6px;
 $border-color: #d9d9d9;
+$blue: #1980ff;
 .color-dialog {
   background: white;
-  border-radius: $radius;
   box-shadow: 0 0 3px fade-out(black, 0.5);
-  min-width: 15em;
-  max-width: 90%;
-
+  border-radius: $radius;
   &-overlay {
     position: fixed;
     top: 0;
@@ -71,20 +102,30 @@ $border-color: #d9d9d9;
   }
 
   &-wrapper {
+
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 11;
+    max-width: 90%;
+    min-width: 15em;
+  }
+
+  &-title {
+    color: $blue;
+    font-weight: 600;
   }
 
   > header {
+    border-radius: $radius;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 20px;
     padding: 12px 16px;
-    border-bottom: 1px solid $border-color;
+    background: #f8f8f8;
+
   }
 
   > main {
@@ -92,17 +133,27 @@ $border-color: #d9d9d9;
   }
 
   > footer {
-    border-top: 1px solid $border-color;
-    padding: 12px 16px;
+    padding: 12px 16px 4px;
     text-align: right;
+    position: relative;
+
+    &:before {
+      content: "";
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 90%;
+      height: 1px;
+      margin-left: 5%;
+      background: $border-color;
+    }
   }
 
   &-close {
     position: relative;
     display: inline-block;
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 
     &::before,
@@ -125,7 +176,7 @@ $border-color: #d9d9d9;
     }
 
     &:hover {
-      background-color: #f57272;
+      fill: $blue;
 
       &::before,
       &::after {
