@@ -1,13 +1,12 @@
 <template>
-  <div>Tab 组件</div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 name: "Tab"
 }
 </script>
 
-<style scoped>
-
-</style>

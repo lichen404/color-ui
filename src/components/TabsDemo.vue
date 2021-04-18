@@ -1,20 +1,30 @@
 <template>
   <div> Tabs 示例</div>
   <h1>示例1</h1>
-
-  <Tabs>
-    <Tab title="导航1">内容1</Tab>
-    <Tab title="导航2">内容2</Tab>
+  <span>当前选中的 tabIndex :{{value}}</span>
+  <Tabs v-model:value="value">
+    <Tab title="Home">Home</Tab>
+    <Tab title="Service">Service</Tab>
+    <Tab title="Login">Login</Tab>
+    <Tab title="Lorem ipsum dolor sit amet">Lorem ipsum dolor sit amet</Tab>
   </Tabs>
 </template>
 
 <script lang="ts">
 import Tabs from './Tabs.vue';
 import Tab from './Tab.vue';
+import {ref} from 'vue';
 
 export default {
   name: 'TabsDemo',
-  components: {Tab, Tabs}
+  components: {Tab, Tabs},
+  setup(){
+    const value = ref(1);
+    return {
+      value
+    }
+
+  }
 };
 </script>
 
