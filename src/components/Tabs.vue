@@ -8,7 +8,10 @@
       <span class="color-tabs-nav-indicator" ref="indicator"></span>
     </div>
     <div class="color-tabs-content">
-      <component :is="current" :key="current.props.title"/>
+      <transition name="fade-color-tab" mode="out-in">
+        <component :is="current" :key="current.props.title"/>
+      </transition>
+
     </div>
 
   </div>
@@ -88,6 +91,21 @@ export default {
 <style lang="scss">
 $blue: #1980ff;
 $border-color: #d9d9d9;
+.fade-color-tab-enter-active, .fade-color-tab-leave-active {
+  transition: all .3s;
+}
+.fade-color-tab-enter  {
+  top: 0;
+  opacity: 0;
+  position: absolute;
+  transform: translateX(-100%);
+}
+.fade-color-tab-leave-to {
+  top: 0;
+  opacity: 0;
+  position: absolute;
+  transform: translateX(100%);
+}
 .color-tabs {
   &-nav {
     display: flex;
@@ -123,6 +141,7 @@ $border-color: #d9d9d9;
 
   &-content {
     padding: 8px 0;
+    position: relative;
   }
 }
 </style>
