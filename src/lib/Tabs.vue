@@ -95,13 +95,11 @@ $border-color: #d9d9d9;
   transition: all .3s;
 }
 .fade-color-tab-enter  {
-  top: 0;
   opacity: 0;
   position: absolute;
   transform: translateX(-100%);
 }
 .fade-color-tab-leave-to {
-  top: 0;
   opacity: 0;
   position: absolute;
   transform: translateX(100%);
