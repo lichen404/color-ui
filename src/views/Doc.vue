@@ -67,7 +67,6 @@ export default {
     flex-grow: 1;
     > aside {
       flex-shrink: 0;
-      background: lightblue;
       width:150px;
       padding:16px;
       > h2 {
@@ -88,7 +87,7 @@ export default {
     > main {
       flex-grow: 1;
       padding: 16px;
-      background-color:lightgreen;
+
       overflow: auto;
     }
   }

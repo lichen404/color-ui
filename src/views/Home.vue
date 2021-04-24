@@ -65,6 +65,10 @@ $border-radius: 6px;
     background: linear-gradient(30deg, rgba($red, 1), rgba($blue, .8));
     -webkit-background-clip: text;
   }
+  > h2 {
+    padding: 0 20px;
+    text-align: center;
+  }
 
 
   > .actions {
@@ -87,20 +91,37 @@ $border-radius: 6px;
 
 .features {
   margin: 64px auto;
-  width: 400px;
-  @media (min-width: 800px) {
-    width: 800px;
+  @media (min-width: 400px) {
+    width: 400px;
+    >ul {
+      > li {
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    width: 768px;
+    > ul {
+      > li {
+        width: 50%;
+      }
+    }
   }
   @media (min-width: 1200px) {
     width: 1200px;
+    > ul {
+      li {
+        width: 33.3%;
+      }
+    }
   }
 
   > ul {
     display: flex;
     flex-wrap: wrap;
-
+    padding: 0 10px;
     > li {
-      width: 400px;
       margin: 16px 0;
       display: grid;
       justify-content: start;
@@ -132,7 +153,6 @@ $border-radius: 6px;
 .home_background {
   background: linear-gradient(30deg, rgba($green, .4), rgba($green, .8));
   clip-path: ellipse(80% 60% at 50% 40%);
-
 
 }
 </style>

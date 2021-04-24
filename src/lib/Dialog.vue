@@ -1,28 +1,30 @@
 <template>
-  <template v-if="visible">
-    <Teleport to="body">
-      <div class="color-dialog-overlay" @click="onClickOverlay"></div>
-      <div class="color-dialog-wrapper">
-        <div class="color-dialog">
-          <header>
+  <transition name="dialog-t">
+    <div v-if="visible">
+      <Teleport to="body">
+        <div class="color-dialog-overlay" @click="onClickOverlay"></div>
+        <div class="color-dialog-wrapper">
+          <div class="color-dialog">
+            <header>
             <span class="color-dialog-title">
             {{ title }}
           </span>
-            <svg class="color-dialog-close" aria-hidden="true" @click="close">
-              <use xlink:href="#icon-close"></use>
-            </svg>
-          </header>
-          <main>
-            <slot name="content"/>
-          </main>
-          <footer>
-            <Button @click="onAccept" :disabled="!isValid">{{ acceptText }}</Button>
-            <Button @click="onCancel">{{ cancelText }}</Button>
-          </footer>
+              <svg class="color-dialog-close" aria-hidden="true" @click="close">
+                <use xlink:href="#icon-close"></use>
+              </svg>
+            </header>
+            <main>
+              <slot name="content"/>
+            </main>
+            <footer>
+              <Button @click="onAccept" :disabled="!isValid">{{ acceptText }}</Button>
+              <Button @click="onCancel">{{ cancelText }}</Button>
+            </footer>
+          </div>
         </div>
-      </div>
-    </Teleport>
-  </template>
+      </Teleport>
+    </div>
+  </transition>
 </template>
 <script lang="ts">
 import Button from './Button.vue';
@@ -81,16 +83,34 @@ export default {
       onCancel
     };
   }
-}
+};
 </script>
 <style lang="scss">
 $radius: 6px;
 $border-color: #d9d9d9;
 $blue: #1980ff;
+
+.dialog-t-enter, .dialog-t-leave-to {
+  opacity: 0;
+
+}
+
+.dialog-t-enter .color-dialog {
+  transform: scale(.9);
+}
+
+.dialog-t-leave-to .color-dialog {
+  transform: scale(.9);
+}
+.dialog-t-leave-active,.dialog-t-enter-active {
+  transition: all .2s;
+}
 .color-dialog {
   background: white;
   box-shadow: 0 0 3px fade-out(black, 0.5);
   border-radius: $radius;
+  transition: all .2s;
+
   &-overlay {
     position: fixed;
     top: 0;

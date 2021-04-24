@@ -1,10 +1,11 @@
 <template>
   <div>
     <div class="top_nav">
-
-      <svg class="logo" aria-hidden="true">
-        <use xlink:href="#icon-color"></use>
-      </svg>
+      <router-link to="/">
+        <svg class="logo" aria-hidden="true">
+          <use xlink:href="#icon-color"></use>
+        </svg>
+      </router-link>
 
       <ul class="menu">
         <li>菜单1</li>
@@ -19,25 +20,28 @@
 
 </template>
 <script lang="ts">
-import {inject,Ref} from 'vue';
+import {inject, Ref} from 'vue';
+import router from '../router';
+
 export default {
-  props:{
-    toggleMenuButtonVisible:{
-      type:Boolean,
-      default:false
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false
     }
   },
-  setup(){
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
-    const toggleMenu = ()=>{
-      menuVisible.value = !menuVisible.value
-    }
+  setup() {
+    const menuVisible = inject<Ref<boolean>>('menuVisible');
+    const toggleMenu = () => {
+      menuVisible.value = !menuVisible.value;
+    };
+
     return {
       toggleMenu
-    }
+    };
 
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .top_nav {
@@ -48,10 +52,13 @@ export default {
   justify-content: center;
   align-items: center;
 
-  > svg.logo {
-    height: 40px;
-    width: 40px;
+  > a {
     margin-right: auto;
+
+    > svg.logo {
+      height: 40px;
+      width: 40px;
+    }
   }
 
   > .menu {
@@ -63,25 +70,27 @@ export default {
       margin: 0 1em;
     }
   }
+
   > .toggleAside {
-    width:24px;
-    height:24px;
+    width: 24px;
+    height: 24px;
     position: absolute;
-    left:16px;
-    top:50%;
+    left: 16px;
+    top: 50%;
     transform: translateY(-50%);
     display: none;
   }
-  @media (max-width:500px){
-      >.menu {
-        display: none;
-      }
-      >.logo {
-        margin: 0 auto;
-      }
-      > .toggleAside {
-        display: inline-block;
-      }
+
+  @media (max-width: 500px) {
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
+    > .toggleAside {
+      display: inline-block;
+    }
   }
 }
 </style>
