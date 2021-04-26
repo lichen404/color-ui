@@ -30,10 +30,6 @@ export default {
   opacity: 0;
   transform: translateX(-100%);
 }
-.router-switch-enter-to,.router-switch-leave-from {
-  opacity: 1;
-  transform: translateX(0);
-}
 .router-switch-leave-to {
   transform: translateX(100%);
   opacity: 0;

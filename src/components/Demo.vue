@@ -1,15 +1,23 @@
 <template>
   <div class="demo">
-    <h2>{{component.__sourceCodeTitle}}</h2>
+    <div class="demo-header">
+      <h2>{{ component.__sourceCodeTitle }}</h2>
+      <div class="demo-actions">
+        <svg class="icons" aria-hidden="true" @click="toggleCode" v-if="codeVisible">
+          <use xlink:href="#icon-code-close"></use>
+        </svg>
+        <svg class="icons" aria-hidden="true" @click="toggleCode" v-else>
+          <use xlink:href="#icon-code-open"></use>
+        </svg>
+      </div>
+    </div>
     <div class="demo-component">
       <component :is="component"/>
     </div>
-    <div class="demo-actions">
-      <Button @click="toggleCode">查看代码</Button>
-    </div>
-    <div class="demo-code" v-if="codeVisible">
-     <pre class="language-html" v-html="html"/>
-    </div>
+      <div class="demo-code" v-if="codeVisible">
+        <pre class="language-html" v-html="html"/>
+      </div>
+
   </div>
 </template>
 
@@ -19,53 +27,69 @@ import 'prismjs/themes/prism-tomorrow.css';
 import Button from '../lib/Button.vue';
 import {computed, ref} from 'vue';
 
-const Prism = (window as any).Prism
+const Prism = (window as any).Prism;
 
 export default {
   name: 'Demo',
   components: {Button},
   props: {
-    component:Object
+    component: Object
   },
-  setup(props){
-    const html = computed(()=>{
-      return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')
-    })
-    const toggleCode = () => codeVisible.value = !codeVisible.value
-    const codeVisible = ref(false)
+  setup(props) {
+    const html = computed(() => {
+      return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html');
+    });
+    const toggleCode = () => codeVisible.value = !codeVisible.value;
+    const codeVisible = ref(false);
     return {
       Prism,
       html,
       codeVisible,
       toggleCode
-    }
+    };
   }
 };
 </script>
 <style lang="scss" scoped>
-$border-color: #d9d9d9;
+
+
+
 .demo {
-  border: 1px solid $border-color;
+  border-radius: 6px;
   margin: 16px 0 32px;
-  >h2 {
-    font-size: 20px;
-    padding: 8px 16px;
-    border-bottom: 1px solid $border-color;
+  background-color: #fff;
+  box-shadow: 0 4px 25px rgb(0 0 0 /10%);
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 0;
+    > h2 {
+      font-size: 20px;
+
+    }
+    .demo-actions {
+      > svg.icons {
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+      }
+    }
   }
+
+
   &-component {
     padding: 16px;
   }
-  &-actions {
-    padding: 8px 16px;
-    border-top: 1px dashed $border-color;
-  }
+
+
+
   &-code {
-    padding: 8px 16px;
-    border-top: 1px dashed $border-color;
-    >pre {
+    padding: 8px 16px 16px;
+    > pre {
       line-height: 1.1;
       font-family: Consolas, 'Courier New', Courier, monospace;
       margin: 0;
+
     }
   }
 }
