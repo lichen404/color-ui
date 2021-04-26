@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="top_nav">
       <router-link to="/">
         <svg class="logo" aria-hidden="true">
@@ -12,16 +11,14 @@
         <li>菜单2</li>
       </ul>
 
-      <svg aria-hidden="true" @click="toggleMenu" class="toggleAside" v-if="toggleMenuButtonVisible">
+      <svg aria-hidden="true" @click="toggleMenu" class="toggle-aside" v-if="toggleMenuButtonVisible">
         <use xlink:href="#icon-menu"></use>
       </svg>
     </div>
-  </div>
-
 </template>
 <script lang="ts">
 import {inject, Ref} from 'vue';
-import router from '../router';
+
 
 export default {
   props: {
@@ -45,9 +42,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .top_nav {
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.04);
   position: relative;
   display: flex;
-  padding: 16px;
+  padding: 4px 16px;
   z-index: 10;
   justify-content: center;
   align-items: center;
@@ -71,7 +69,7 @@ export default {
     }
   }
 
-  > .toggleAside {
+  > .toggle-aside {
     width: 24px;
     height: 24px;
     position: absolute;
@@ -79,16 +77,17 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    cursor: pointer;
   }
 
   @media (max-width: 500px) {
     > .menu {
       display: none;
     }
-    > .logo {
+    > a {
       margin: 0 auto;
     }
-    > .toggleAside {
+    > .toggle-aside {
       display: inline-block;
     }
   }

@@ -1,7 +1,10 @@
 <template>
-  <h1> Tabs 示例</h1>
-  <Demo :component="TabsDemo1"/>
-  <Demo :component="TabsDemo2"/>
+  <div>
+    <h1> Tabs 示例</h1>
+    <Demo :component="TabsDemo1"/>
+    <Demo :component="TabsDemo2"/>
+  </div>
+
 </template>
 
 <script lang="ts">

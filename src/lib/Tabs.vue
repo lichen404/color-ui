@@ -94,7 +94,7 @@ $border-color: #d9d9d9;
 .fade-color-tab-enter-active, .fade-color-tab-leave-active {
   transition: all .3s;
 }
-.fade-color-tab-enter  {
+.fade-color-tab-enter-from  {
   opacity: 0;
   position: absolute;
   transform: translateX(-100%);

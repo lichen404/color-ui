@@ -1,8 +1,11 @@
 <template>
-  <h1>示例1</h1>
-  <Demo :component="DialogDemo1"/>
-  <Demo :component="DialogDemo2"/>
-  <Demo :component="DialogDemo3"/>
+  <div>
+    <h1>示例1</h1>
+    <Demo :component="DialogDemo1"/>
+    <Demo :component="DialogDemo2"/>
+    <Demo :component="DialogDemo3"/>
+  </div>
+
 </template>
 
 <script lang="ts">
