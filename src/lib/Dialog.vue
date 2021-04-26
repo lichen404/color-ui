@@ -9,9 +9,7 @@
             <span class="color-dialog-title">
             {{ title }}
           </span>
-              <svg class="color-dialog-close" aria-hidden="true" @click="close">
-                <use xlink:href="#icon-close"></use>
-              </svg>
+             <CloseIcon @click="close"/>
             </header>
             <main>
               <slot name="content"/>
@@ -28,9 +26,10 @@
 </template>
 <script lang="ts">
 import Button from './Button.vue';
+import CloseIcon from '../assets/close.svg'
 
 export default {
-  components: {Button},
+  components: {Button,CloseIcon},
   props: {
     visible: {
       type: Boolean,
