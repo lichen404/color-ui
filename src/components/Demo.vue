@@ -15,7 +15,7 @@
       <component :is="component"/>
     </div>
     <div class="demo-code-wrapper" :style="{height:computedHeight + 'px'}">
-      <div class="demo-code" v-if="codeVisible" ref="demoCode">
+      <div class="demo-code" ref="demoCode">
         <pre class="language-html" v-html="html"/>
       </div>
     </div>
@@ -59,6 +59,8 @@ export default {
         codeHeight = height;
       }
 
+    },{
+      flush:'sync'
     });
 
     return {
@@ -117,7 +119,8 @@ export default {
     }
 
     &-wrapper {
-      transition: all .2s
+      transition: all .2s;
+      overflow: hidden;
     }
   }
 }
