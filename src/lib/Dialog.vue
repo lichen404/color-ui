@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <transition name="dialog-t">
+    <transition name="dialog">
       <div v-if="visible">
         <div class="color-dialog-overlay" @click="onClickOverlay"></div>
         <div class="color-dialog-wrapper">
@@ -28,6 +28,7 @@
 </template>
 <script lang="ts">
 import Button from './Button.vue';
+
 export default {
   components: {Button},
   props: {
@@ -89,16 +90,20 @@ $radius: 6px;
 $border-color: #d9d9d9;
 $blue: #1980ff;
 
-.dialog-t-enter-from .color-dialog, .dialog-t-leave-to .color-dialog {
+.dialog-enter-from .color-dialog, .dialog-leave-to .color-dialog {
   transform: scale(.8);
   opacity: 0;
+}
+
+.dialog-leave-active, .dialog-enter-active {
+  transition: all .2s;
 }
 
 .color-dialog {
   background: white;
   box-shadow: 0 0 3px fade-out(black, 0.5);
   border-radius: $radius;
-  transition: all 250ms;
+  transition: all .2s;
 
   &-overlay {
     position: fixed;
@@ -107,11 +112,11 @@ $blue: #1980ff;
     width: 100%;
     height: 100%;
     background: fade_out(black, 0.5);
-    z-index: 10;
+    z-index: 11;
+
   }
 
   &-wrapper {
-
     position: fixed;
     left: 50%;
     top: 50%;
