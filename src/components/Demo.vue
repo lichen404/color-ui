@@ -14,9 +14,12 @@
     <div class="demo-component">
       <component :is="component"/>
     </div>
-      <div class="demo-code" v-if="codeVisible">
+    <div class="demo-code-wrapper" :style="{height:computedHeight + 'px'}">
+      <div class="demo-code" v-if="codeVisible" ref="demoCode">
         <pre class="language-html" v-html="html"/>
       </div>
+    </div>
+
 
   </div>
 </template>
@@ -25,7 +28,7 @@
 import 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
 import Button from '../lib/Button.vue';
-import {computed, ref} from 'vue';
+import {computed, ref, watchEffect} from 'vue';
 
 const Prism = (window as any).Prism;
 
@@ -36,16 +39,35 @@ export default {
     component: Object
   },
   setup(props) {
+    let codeHeight = 0;
     const html = computed(() => {
       return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html');
     });
-    const toggleCode = () => codeVisible.value = !codeVisible.value;
+    const demoCode = ref<HTMLDivElement>(null);
+    const toggleCode = () => {
+      codeVisible.value = !codeVisible.value;
+      computedHeight.value = codeVisible.value ? codeHeight : 0;
+    };
     const codeVisible = ref(false);
+    const computedHeight = ref(0);
+
+    watchEffect(() => {
+      if (demoCode.value) {
+        const {
+          height
+        } = demoCode.value.getBoundingClientRect();
+        codeHeight = height;
+      }
+
+    });
+
     return {
       Prism,
       html,
       codeVisible,
-      toggleCode
+      toggleCode,
+      computedHeight,
+      demoCode
     };
   }
 };
@@ -53,20 +75,22 @@ export default {
 <style lang="scss" scoped>
 
 
-
 .demo {
   border-radius: 6px;
   margin: 16px 0 32px;
   background-color: #fff;
   box-shadow: 0 4px 25px rgb(0 0 0 /10%);
+
   &-header {
     display: flex;
     justify-content: space-between;
     padding: 20px 20px 0;
+
     > h2 {
       font-size: 20px;
 
     }
+
     .demo-actions {
       > svg.icons {
         cursor: pointer;
@@ -82,14 +106,18 @@ export default {
   }
 
 
-
   &-code {
     padding: 8px 16px 16px;
+
     > pre {
       line-height: 1.1;
       font-family: Consolas, 'Courier New', Courier, monospace;
       margin: 0;
 
+    }
+
+    &-wrapper {
+      transition: all .2s
     }
   }
 }

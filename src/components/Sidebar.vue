@@ -75,9 +75,11 @@ export default {
     flex-shrink: 0;
     width: 200px;
     padding: 16px 0;
-    min-height: 100vh;
+    height: calc(100vh - 54px);
+    position: fixed;
+    top:54px;
+    left: 0;
     background-color: #f5f7fb;
-
     > h2 {
       margin-bottom: 4px;
       margin-left: 10px;
@@ -100,7 +102,7 @@ export default {
       }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 720px) {
       position: fixed;
       top: 54px;
       left: 0;

@@ -48,8 +48,10 @@ export default {
     display: flex;
     position: relative;
     flex-grow: 1;
-
-
+    padding: 54px 0 0 200px;
+    @media (max-width: 720px) {
+      padding-left: 0;
+    }
     > main {
       flex-grow: 1;
       overflow: auto;

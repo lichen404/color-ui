@@ -21,8 +21,8 @@ export default {
     const visible = ref(false);
     const valid = ref(false);
     const text = ref('');
-    const handleChange = (e) => {
-      text.value = e.target.value;
+    const handleChange = (e:InputEvent) => {
+      text.value = (e.target as HTMLInputElement).value;
     };
     const toggle = () => visible.value = !visible.value;
     watch(text, () => {

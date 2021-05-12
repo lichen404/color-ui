@@ -2,8 +2,8 @@
  默认
 </demo>
 <template>
- <Button>你好</Button>
-  <Button type="border">你好</Button>
+ <Button>Primary</Button>
+  <Button type="border">Border</Button>
 </template>
 
 <script>

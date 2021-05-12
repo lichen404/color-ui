@@ -11,7 +11,6 @@
       <transition name="fade-color-tab" mode="out-in">
         <component :is="current" :key="current.props.title"/>
       </transition>
-
     </div>
 
   </div>
@@ -23,10 +22,11 @@ import {
   computed,
   ref,
   watchEffect,
-  onMounted
+  onMounted,
+  defineComponent
 } from 'vue';
 
-export default {
+export default defineComponent({
   name: 'Tabs',
   props: {
     value: {
@@ -68,7 +68,7 @@ export default {
       return tag.props.title;
     });
     const current = computed(() => {
-      return defaults.find((tag, index) => index === selectedIndex.value)
+      return defaults.find((tag, index) => index === selectedIndex.value);
     });
     const select = (index: number) => {
       context.emit('update:value', index);
@@ -85,7 +85,7 @@ export default {
       container
     };
   }
-};
+});
 </script>
 
 <style lang="scss">
@@ -94,16 +94,19 @@ $border-color: #d9d9d9;
 .fade-color-tab-enter-active, .fade-color-tab-leave-active {
   transition: all .3s;
 }
-.fade-color-tab-enter-from  {
+
+.fade-color-tab-enter-from {
   opacity: 0;
-  position: absolute;
+  display: inline-block;
   transform: translateX(-100%);
 }
+
 .fade-color-tab-leave-to {
   opacity: 0;
-  position: absolute;
+  display: inline-block;
   transform: translateX(100%);
 }
+
 .color-tabs {
   &-nav {
     display: flex;
@@ -118,7 +121,7 @@ $border-color: #d9d9d9;
         margin-left: 0;
       }
 
-      &:hover,&.selected {
+      &:hover, &.selected {
         color: $blue;
       }
     }
@@ -133,7 +136,7 @@ $border-color: #d9d9d9;
       bottom: -1px;
       width: 50px;
       transition: all 250ms;
-      will-change: left,width;
+      will-change: left, width;
     }
   }
 

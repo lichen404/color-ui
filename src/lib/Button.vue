@@ -6,7 +6,8 @@
   </button>
 </template>
 <script lang="ts">
-export default {
+import {defineComponent} from 'vue'
+export default defineComponent({
   props: {
     type: {
       type: String,
@@ -25,7 +26,7 @@ export default {
     const { ...rest } = context.attrs;
     return { rest };
   },
-};
+});
 </script>
 <style lang="scss">
 // 默认高度

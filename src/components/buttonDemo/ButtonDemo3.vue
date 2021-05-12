@@ -2,7 +2,7 @@
 支持 disabled
 </demo>
 <template>
-  <Button disabled>你好</Button>
+  <Button disabled>Disabled</Button>
 </template>
 
 <script>
