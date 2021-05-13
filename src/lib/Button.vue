@@ -76,7 +76,7 @@ button.color-button {
     @mixin style($color){
       background: rgb(var($color));
       &:hover {
-        box-shadow: 0 8px 24px -8px var($color);
+        box-shadow: 0 8px 24px -8px rgb(var($color));
       }
     }
     &.color-primary {

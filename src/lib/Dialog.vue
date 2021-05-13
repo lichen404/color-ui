@@ -6,10 +6,10 @@
         <div class="color-dialog-wrapper">
           <div class="color-dialog">
             <header>
-            <span class="color-dialog-title">
+            <span class="color-dialog-title" :class="`color-${color}`">
             {{ title }}
           </span>
-              <svg aria-hidden="true" @click="close" class="color-dialog-close">
+              <svg aria-hidden="true" @click="close" class="color-dialog-close" :class="`color-${color}`">
                 <use xlink:href="#icon-close"></use>
               </svg>
             </header>
@@ -17,8 +17,8 @@
               <slot name="content"/>
             </main>
             <footer>
-              <Button @click="onAccept" :disabled="!isValid">{{ acceptText }}</Button>
-              <Button @click="onCancel">{{ cancelText }}</Button>
+              <Button @click="onAccept" :disabled="!isValid" :color="color" >{{ acceptText }}</Button>
+              <Button @click="onCancel" type="border">{{ cancelText }}</Button>
             </footer>
           </div>
         </div>
@@ -55,6 +55,10 @@ export default {
     isValid: {
       type: Boolean,
       default: true
+    },
+    color:{
+      type:String,
+      default:'primary'
     }
   },
   emits: ['update:visible', 'accept', 'cancel'], //声明要触发的自定义事件，否则会有警告
@@ -88,7 +92,6 @@ export default {
 <style lang="scss">
 $radius: 6px;
 $border-color: #d9d9d9;
-$blue: #1980ff;
 
 .dialog-enter-from .color-dialog, .dialog-leave-to .color-dialog {
   transform: scale(.8);
@@ -127,8 +130,28 @@ $blue: #1980ff;
   }
 
   &-title {
-    color: $blue;
     font-weight: 600;
+    @mixin style($color){
+      color:rgb(var($color));
+    }
+    &.color-primary {
+      @include style(--color-primary)
+    }
+    &.color-danger {
+      @include style(--color-danger)
+    }
+    &.color-success {
+      @include style(--color-success)
+    }
+    &.color-dark {
+      @include style(--color-dark)
+    }
+    &.color-light {
+      @include style(--color-light)
+    }
+    &.color-warning {
+      @include style(--color-warning)
+    }
   }
 
   > header {
@@ -171,7 +194,28 @@ $blue: #1980ff;
     cursor: pointer;
 
     &:hover {
-      fill: $blue;
+      @mixin style($color){
+        fill:rgb(var($color));
+      }
+      &.color-primary {
+        @include style(--color-primary)
+      }
+      &.color-danger {
+        @include style(--color-danger)
+      }
+      &.color-success {
+        @include style(--color-success)
+      }
+      &.color-dark {
+        @include style(--color-dark)
+      }
+      &.color-light {
+        @include style(--color-light)
+      }
+      &.color-warning {
+        @include style(--color-warning)
+      }
+
     }
   }
 }
