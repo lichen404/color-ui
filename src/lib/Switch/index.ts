@@ -1,6 +1,6 @@
-import Button from './Button.vue'
+import Switch from './Switch.vue'
 export default (app)=>{
-    app.component('Button',Button)
+    app.component('Switch',Switch)
     const colors = {
         primary:'25,128,255',
         danger:'255,71,87',
@@ -11,4 +11,5 @@ export default (app)=>{
     for(const color in colors){
         document.documentElement.style.setProperty(`--color-${color}`, colors[color]);
     }
+
 }

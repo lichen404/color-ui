@@ -15,11 +15,6 @@ export default {
             file: 'package/lib/color-ui.js',
             format: 'umd',
             plugins: [terser()],
-        }, {
-            name: 'color-ui',
-            file: 'package/lib/color-ui.esm.js',
-            format: 'es',
-            plugins: [terser()],
         }],
     plugins: [
         less({include: /\.scss$/, less: dartSass}),

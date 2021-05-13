@@ -1,15 +1,14 @@
-import Switch from './Switch.vue';
+import Switch from './Switch/Switch.vue';
 import Button from './Button/Button.vue';
-import Tabs from './Tabs.vue';
-import Tab from './Tab.vue';
-import Dialog from './Dialog.vue';
-import {openDialog} from './openDialog';
-
-export {default as Switch} from './Switch.vue';
+import Tabs from './Tabs/Tabs.vue';
+import Tab from './Tabs/Tab.vue';
+import Dialog from './Dialog/Dialog.vue';
+import {openDialog} from './Dialog/openDialog';
+import "./color.scss";
+export {default as Switch} from './Switch';
 export {default as Button} from './Button';
-export {default as Tabs} from './Tabs.vue';
-export {default as Dialog} from './Dialog.vue';
-export {openDialog as openDialog} from './openDialog';
+export {default as Tabs} from './Tabs';
+export {default as Dialog} from './Dialog';
 export default {
     install: (app, options) => {
         app.component('Tabs', Tabs);

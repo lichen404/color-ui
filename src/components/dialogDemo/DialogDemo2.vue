@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import {openDialog} from '../../lib/openDialog';
+import {openDialog} from '../../lib/Dialog/openDialog';
 export default {
   name: 'DialogDemo2',
   setup(){

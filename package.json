@@ -1,11 +1,12 @@
 {
-  "name": "color-ui",
-  "version": "0.0.1",
+  "name": "@lichen404/color-ui",
+  "version": "0.0.3",
+  "files": ["package/lib/*"],
+  "main": "package/lib/color-ui.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
   },
-  "private": "true",
   "dependencies": {
     "github-markdown-css": "^4.0.0",
     "marked": "^2.0.3",

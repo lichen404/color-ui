@@ -1,6 +1,8 @@
-import Button from './Button.vue'
+import Dialog from './Dialog.vue'
+import {openDialog} from './openDialog';
 export default (app)=>{
-    app.component('Button',Button)
+    app.component('Dialog',Dialog)
+    app.config.globalProperties.$dialog = openDialog;
     const colors = {
         primary:'25,128,255',
         danger:'255,71,87',
