@@ -3,9 +3,9 @@
     <div class="color-tabs-nav" ref="container">
       <div class="color-tabs-nav-item" v-for="(t,index) in titles"
            :ref="el => { if (index === selectedIndex) this.selectedItem = el }"
-           @click="select(index)" :class="{selected: index === selectedIndex}" :key="index">{{ t }}
+           @click="select(index)" :class="{selected: index === selectedIndex, [`color-${color}`]:index===selectedIndex}" :key="index">{{ t }}
       </div>
-      <span class="color-tabs-nav-indicator" ref="indicator"></span>
+      <span class="color-tabs-nav-indicator" ref="indicator" :class="`color-${color}`"></span>
     </div>
     <div class="color-tabs-content">
       <transition name="fade-color-tab" mode="out-in">
@@ -31,6 +31,10 @@ export default defineComponent({
   props: {
     value: {
       type: Number
+    },
+    color:{
+      type:String,
+      default:'primary'
     }
   },
   setup(props, context) {
@@ -122,7 +126,27 @@ $border-color: #d9d9d9;
       }
 
       &:hover, &.selected {
-        color: $blue;
+        @mixin style($color){
+          color:rgb(var($color));
+        }
+        &.color-primary {
+          @include style(--color-primary)
+        }
+        &.color-danger {
+          @include style(--color-danger)
+        }
+        &.color-success {
+          @include style(--color-success)
+        }
+        &.color-dark {
+          @include style(--color-dark)
+        }
+        &.color-light {
+          @include style(--color-light)
+        }
+        &.color-warning {
+          @include style(--color-warning)
+        }
       }
     }
 
@@ -130,8 +154,28 @@ $border-color: #d9d9d9;
       position: absolute;
       display: block;
       height: 2px;
-      background: linear-gradient(30deg, rgba($blue, 1), rgba($blue, .5));
-      box-shadow: 0 0 8px rgba($blue, .4);
+      @mixin style($color){
+        background: linear-gradient(30deg, rgba(var($color), 1), rgba(var($color), .5));
+        box-shadow: 0 0 8px rgba(var($color), .4);
+      }
+      &.color-primary {
+        @include style(--color-primary)
+      }
+      &.color-danger {
+        @include style(--color-danger)
+      }
+      &.color-success {
+        @include style(--color-success)
+      }
+      &.color-dark {
+        @include style(--color-dark)
+      }
+      &.color-light {
+        @include style(--color-light)
+      }
+      &.color-warning {
+        @include style(--color-warning)
+      }
       left: 0;
       bottom: -1px;
       width: 50px;
