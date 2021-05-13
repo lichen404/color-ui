@@ -74,7 +74,7 @@ export default defineComponent({
     const current = computed(() => {
       return defaults.find((tag, index) => index === selectedIndex.value);
     });
-    const select = (index: number) => {
+    const select = (index) => {
       context.emit('update:value', index);
       selectedIndex.value = index;
     };

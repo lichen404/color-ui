@@ -27,7 +27,7 @@
 <script lang="ts">
 import 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
-import Button from '../lib/Button.vue';
+import Button from '../lib/Button/Button.vue';
 import {computed, ref, watchEffect} from 'vue';
 
 const Prism = (window as any).Prism;
