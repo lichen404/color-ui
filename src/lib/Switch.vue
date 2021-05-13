@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked:value,disabled}" class="color-switch">
+  <button @click="toggle" :class="[{checked:value},disabled,`color-${color}`]" class="color-switch">
     <span></span>
   </button>
 </template>
@@ -11,6 +11,10 @@ export default {
      disabled:{
        type:Boolean,
        default:false
+     },
+     color:{
+       type:String,
+       default:'primary'
      }
 
    },
@@ -59,7 +63,28 @@ export default {
       }
     }
     &.checked {
-      background-color: #1890ff;
+      @mixin style($color){
+        background:rgb(var($color));
+      }
+      &.color-primary {
+        @include style(--color-primary)
+      }
+      &.color-danger {
+        @include style(--color-danger)
+      }
+      &.color-success {
+        @include style(--color-success)
+      }
+      &.color-dark {
+        @include style(--color-dark)
+      }
+      &.color-light {
+        @include style(--color-light)
+      }
+      &.color-warning {
+        @include style(--color-warning)
+      }
+
       > span {
         left:calc(100% - #{$h2} - 2px)
       }
