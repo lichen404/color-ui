@@ -7,8 +7,14 @@
     </router-link>
 
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <a href="https://github.com/lichen404/color-ui" target="_blank">Github</a>
+      </li>
+      <li>
+       <router-link to="/">
+         首页
+       </router-link>
+      </li>
     </ul>
 
     <svg aria-hidden="true" @click="toggleMenu" class="toggle-aside" v-if="toggleMenuButtonVisible">

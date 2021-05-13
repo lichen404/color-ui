@@ -5,7 +5,7 @@
       <h1>Color UI</h1>
       <h2>一款基于 Vue3 和 TypeScript 的 UI 框架</h2>
       <p class="actions">
-        <a href="https://github.com">GitHub</a>
+        <a href="https://github.com/lichen404/color-ui">GitHub</a>
         <router-link to="/doc">开始</router-link>
       </p>
     </div>
@@ -107,8 +107,8 @@ $border-radius: 6px;
       }
     }
   }
-  @media (min-width: 1200px) {
-    width: 1200px;
+  @media (min-width: 1280px) {
+    width: 1280px;
     > ul {
       li {
         width: 33.3%;
@@ -124,12 +124,11 @@ $border-radius: 6px;
       margin: 16px 0;
       display: grid;
       justify-content: start;
-      align-content: space-between;
       grid-template-areas:
         "icon title"
         "icon text";
       grid-template-columns: 80px auto;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: 48px auto;
 
       > svg {
         grid-area: icon;

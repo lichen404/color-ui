@@ -83,11 +83,13 @@ export default {
     > h2 {
       margin-bottom: 4px;
       margin-left: 10px;
+      font-size: 18px;
+      padding: 10px;
+      font-weight: 600;
     }
     > ol {
       > li {
         > a.router-link-active {
-          font-weight: 600;
           border-left-color: rgb(25,128,255);
           color: rgb(25,128,255);
           opacity: 1;

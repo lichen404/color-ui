@@ -55,7 +55,7 @@ export default {
     > main {
       flex-grow: 1;
       overflow: auto;
-      max-width: 960px;
+      max-width: 1024px;
       padding: 16px;
       margin: 0 auto;
     }
