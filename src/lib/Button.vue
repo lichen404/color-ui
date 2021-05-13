@@ -1,5 +1,5 @@
 <template>
-  <button class="color-button" :class="[type,size,{'disabled':disabled}]" type="button">
+  <button class="color-button" :class="[type,size,{'disabled':disabled},`color-${color}`]" type="button">
     <span class="color-button-text">
       <slot></slot>
     </span>
@@ -20,6 +20,10 @@ export default defineComponent({
     disabled:{
       type:Boolean,
       default:false
+    },
+    color:{
+      type:String,
+      default:'primary'
     }
   },
   setup(props, context) {
@@ -35,8 +39,6 @@ $h: 32px;
 $border-color: #d9d9d9;
 // 默认字体颜色
 $color: #fff;
-// 背景颜色参数
-$blue: #1980ff;
 // 角度参数
 $radius: 6px;
 button.color-button {
@@ -70,23 +72,62 @@ button.color-button {
     padding: 8px;
   }
 
-
   &.filled {
-    background: $blue;
-
-    &:hover {
-      box-shadow: 0 8px 24px -8px $blue;
+    @mixin style($color){
+      background: rgb(var($color));
+      &:hover {
+        box-shadow: 0 8px 24px -8px var($color);
+      }
+    }
+    &.color-primary {
+      @include style(--color-primary)
+    }
+    &.color-danger {
+      @include style(--color-danger)
+    }
+    &.color-success {
+      @include style(--color-success)
+    }
+    &.color-dark {
+      @include style(--color-dark)
+    }
+    &.color-light {
+      @include style(--color-light)
+    }
+    &.color-warning {
+      @include style(--color-warning)
     }
   }
 
   &.border {
-    border: 1px solid $blue;
-    color: $blue;
-    background: transparent;
-
-    &:hover {
-      background: rgba($blue, .2);
+    @mixin style($color){
+      color:rgb(var($color));
+      border: 1px solid rgb(var($color));
+      &:hover {
+        background: rgba(var($color),.2);
+      }
     }
+    &.color-primary {
+      @include style(--color-primary)
+    }
+    &.color-danger {
+      @include style(--color-danger)
+    }
+    &.color-success {
+      @include style(--color-success)
+    }
+    &.color-dark {
+      @include style(--color-dark)
+    }
+    &.color-light {
+      @include style(--color-light)
+    }
+    &.color-warning {
+      @include style(--color-warning)
+    }
+
+
+
   }
   &.disabled {
     opacity: .5;

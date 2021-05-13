@@ -2,6 +2,7 @@
   <div>
     <h1>Button 示例</h1>
     <Demo :component="ButtonDemo1"/>
+    <Demo :component="ButtonDemo4"/>
     <Demo :component="ButtonDemo2"/>
     <Demo :component="ButtonDemo3"/>
   </div>
@@ -9,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import ButtonDemo4 from './ButtonDemo4.vue'
 import ButtonDemo1 from './ButtonDemo1.vue';
 import ButtonDemo2 from './ButtonDemo2.vue';
 import ButtonDemo3 from './ButtonDemo3.vue';
@@ -20,7 +22,8 @@ export default {
     return {
       ButtonDemo2,
       ButtonDemo1,
-      ButtonDemo3
+      ButtonDemo3,
+      ButtonDemo4
     };
   }
 };

@@ -3,7 +3,10 @@
 </demo>
 <template>
  <Button>Primary</Button>
-  <Button type="border">Border</Button>
+  <Button color="success">Success</Button>
+  <Button color="danger">Danger</Button>
+  <Button color="warning">Warning</Button>
+  <Button color="dark">Dark</Button>
 </template>
 
 <script>
