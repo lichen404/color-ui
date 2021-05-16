@@ -13,6 +13,14 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.markdown-body {
+  ul,li {
+    list-style: disc;
+  }
+  code {
+    color:#24292e
+  }
+}
 
 body {
   font-size: 16px;
