@@ -2,11 +2,14 @@
  默认
 </demo>
 <template>
- <Button>Primary</Button>
-  <Button color="success">Success</Button>
-  <Button color="danger">Danger</Button>
-  <Button color="warning">Warning</Button>
-  <Button color="dark">Dark</Button>
+  <div class="button-list">
+    <Button>Primary</Button>
+    <Button color="success">Success</Button>
+    <Button color="danger">Danger</Button>
+    <Button color="warning">Warning</Button>
+    <Button color="dark">Dark</Button>
+  </div>
+
 </template>
 
 <script>
@@ -17,3 +20,13 @@ export default {
   components: {Button},
 }
 </script>
+<style lang="scss" scoped>
+.button-list {
+  display: flex;
+  flex-wrap: wrap;
+  > button {
+    margin-top: 8px;
+  }
+}
+
+</style>

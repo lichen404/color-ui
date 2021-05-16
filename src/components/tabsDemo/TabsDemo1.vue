@@ -4,7 +4,7 @@
     <Tab title="Home">Home</Tab>
     <Tab title="Service">Service</Tab>
     <Tab title="Login">Login</Tab>
-    <Tab title="Lorem ipsum dolor sit amet">Lorem ipsum dolor sit amet</Tab>
+    <Tab title="Logout">Logout</Tab>
   </Tabs>
 </template>
 

@@ -43,10 +43,11 @@ export default {
 }
 ul.switch-list {
   display: flex;
+  flex-wrap: wrap;
   > li {
     display: flex;
     align-items: center;
-    margin-right: 8px;
+    margin:4px;
   }
 }
 </style>
