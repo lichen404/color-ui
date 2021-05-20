@@ -6,11 +6,8 @@ import DialogDemo from '../components/dialogDemo/DialogDemo.vue';
 import TabsDemo from '../components/tabsDemo/TabsDemo.vue';
 import {createRouter, createWebHashHistory} from 'vue-router';
 import Markdown from '../components/Markdown.vue';
-// @ts-ignore
 import install from '../markdown/install.md';
-// @ts-ignore
 import getStarted from '../markdown/get-started.md';
-// @ts-ignore
 import intro from '../markdown/intro.md';
 import {h} from 'vue';
 
