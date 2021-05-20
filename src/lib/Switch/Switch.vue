@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="[{checked:value},disabled,`color-${color}`]" class="color-switch">
+  <button @click="toggle" :class="[{checked:value},{disabled},`color-${color}`]" class="color-switch">
     <span></span>
   </button>
 </template>
