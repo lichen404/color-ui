@@ -3,8 +3,8 @@
 ### 引入 Color-UI
 
 ```js
-import '@lichen404/dist/package/color-ui.css'
-import colorUI from '@lichne404-ui'
+import '@lichen404/color-ui/package/lib/color-ui.css'
+import colorUI from '@lichen404/color-ui'
 import App from './App.vue'
 import {createApp} from 'vue'
 
@@ -25,8 +25,8 @@ app.mount('#app')
 ### 引入单个组件
 以 Button 组件为例：
 ```js
-import '@lichen404/dist/package/color-ui.css'
-import {Button} from '@lichne404-ui'
+import '@lichen404/color-ui/package/lib/color-ui.css'
+import {Button} from '@lichen404/color-ui'
 import App from './App.vue'
 import {createApp} from 'vue'
 
