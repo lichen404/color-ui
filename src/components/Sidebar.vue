@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import {inject,Ref} from 'vue';
+import {inject, Ref} from 'vue';
 export default {
   name: 'Sidebar',
   setup() {
@@ -49,7 +49,7 @@ export default {
     };
   }
 
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -58,11 +58,13 @@ export default {
     > .aside-mask {
       display: block;
     }
+
     > aside {
       z-index: 12;
       transform: translateX(0);
     }
   }
+
   > .aside-mask {
     width: 100vw;
     height: 100vh;
@@ -71,15 +73,17 @@ export default {
     left: 0;
     display: none;
   }
+
   > aside {
     flex-shrink: 0;
     width: 200px;
     padding: 16px 0;
     height: calc(100vh - 54px);
     position: fixed;
-    top:54px;
+    top: 54px;
     left: 0;
     background-color: #f5f7fb;
+
     > h2 {
       margin-bottom: 4px;
       margin-left: 10px;
@@ -87,15 +91,17 @@ export default {
       padding: 10px;
       font-weight: 600;
     }
+
     > ol {
       > li {
         > a.router-link-active {
-          border-left-color: rgb(25,128,255);
-          color: rgb(25,128,255);
+          border-left-color: rgb(25, 128, 255);
+          color: rgb(25, 128, 255);
           opacity: 1;
         }
+
         > a {
-          border-left:4px solid transparent;
+          border-left: 4px solid transparent;
           display: inline-block;
           padding: 4px 20px;
           opacity: .8;
@@ -108,7 +114,7 @@ export default {
       position: fixed;
       top: 54px;
       left: 0;
-      transition:transform .2s;
+      transition: transform .2s;
       transform: translateX(-100%);
 
     }

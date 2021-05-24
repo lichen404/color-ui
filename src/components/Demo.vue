@@ -28,7 +28,7 @@
 import 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
 import Button from '../lib/Button/Button.vue';
-import {computed, ref, watchEffect} from 'vue';
+import {computed, onMounted, ref, watchEffect} from 'vue';
 
 const Prism = (window as any).Prism;
 
@@ -51,7 +51,7 @@ export default {
     const codeVisible = ref(false);
     const computedHeight = ref(0);
 
-    watchEffect(() => {
+    onMounted(() => watchEffect(() => {
       if (demoCode.value) {
         const {
           height
@@ -59,9 +59,7 @@ export default {
         codeHeight = height;
       }
 
-    },{
-      flush:'sync'
-    });
+    }));
 
     return {
       Prism,
